@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import {OrbitControls} from "./three/addons/controls/OrbitControls.js";
+import {OrbitControls} from "three/addons/controls/OrbitControls.js";
 
 const canvas = document.getElementById('canvas');
 
@@ -13,11 +13,11 @@ camera.position.z = 5;
 
 //create two objects
 const geometry = new THREE.DodecahedronGeometry();
-const material = new THREE.MeshPhongMaterial({color: '#464585', emissive: '#464585'});
+const material = new THREE.MeshLambertMaterial({color: '#464585', emissive: '#464585'});
 
 const donught = new THREE.Mesh(geometry, material);
 
-const BoxGeometry = new THREE.BoxGeometry(1,1,1);
+const BoxGeometry = new THREE.BoxGeometry(2,0.1,2);//w,h,d
 const BoxMaterial = new THREE.MeshLambertMaterial({color: '#C9B24C', emissive: '#C9B24C'});
 
 const box = new THREE.Mesh(BoxGeometry, BoxMaterial);
@@ -53,11 +53,14 @@ controls.enablePan = true;
 //create animation
 function animate() {
     requestAnimationFrame(animate);
+    
+    donught.rotation.x +=0.01;
+    donught.rotation.y +=0.01;
 
-    donught.rotation.x += 0.01;
-    donught.rotation.y += 0.01;
+    box.rotation.y +=0.005;
+   
 
-    box.rotation.y += 0.005;
+    
 
     controls.update();
     renderer.render(scene, camera);

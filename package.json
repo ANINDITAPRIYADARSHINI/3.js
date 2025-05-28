@@ -1,9 +1,15 @@
 {
   "scripts": {
-    "start": "servor --reload"
+    "start": "servor --reload",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "servor": "^4.0.2",
     "three": "^0.176.0"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
   }
 }
