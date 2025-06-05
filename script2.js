@@ -36,7 +36,7 @@ scene.add(light);
 //create a renderer
 const renderer = new THREE.WebGLRenderer({canvas});
 
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(window.innerWidth, window.innerHeight); //initial size
 renderer.setPixelRatio(window.devicePixelRatio); // it is imp. for mobile-devices
 
 
@@ -65,5 +65,13 @@ function animate() {
     controls.update();
     renderer.render(scene, camera);
 }
+
+//Handle window resizing
+
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix(); //It resets the camera position
+    renderer.setSize(window.innerWidth, window.innerHeight); //new reseted size 
+});
 
 renderer.setAnimationLoop(animate);
